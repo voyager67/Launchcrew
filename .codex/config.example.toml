@@ -1,0 +1,7 @@
+# Optional project-local Codex configuration example.
+# Review the current Codex configuration docs before enabling settings.
+# Do not copy this file to config.toml blindly: agent concurrency and feature
+# availability vary by Codex version and account/workspace configuration.
+
+[agents]
+max_concurrent_threads_per_session = 6

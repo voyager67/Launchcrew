@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+.coverage
+htmlcov/
+.pytest_cache/
+.mypy_cache/
+# Keep generated ChatGPT skill archives when deliberately included in a release.
+# Uncomment the next line if you prefer to generate bundles only locally:
+# dist/chatgpt-skills/

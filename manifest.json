@@ -1,0 +1,57 @@
+{
+  "project": "LaunchCrew",
+  "version": "0.1.0",
+  "description": "A startup-team workflow kit for Codex CLI and ChatGPT.",
+  "skills": [
+    "accessibility-audit",
+    "analyze",
+    "architecture-design",
+    "constitution",
+    "data-science",
+    "debug",
+    "document",
+    "eval-design",
+    "growth-launch",
+    "implement",
+    "incident-response",
+    "performance-audit",
+    "product-discovery",
+    "refactor",
+    "release-manager",
+    "research-brief",
+    "review",
+    "security-audit",
+    "specify",
+    "startup-operations",
+    "test",
+    "ui-ux",
+    "validate"
+  ],
+  "skill_count": 23,
+  "codex_agents": [
+    "architect",
+    "designer",
+    "engineer",
+    "platform",
+    "product_analyst",
+    "qa",
+    "researcher",
+    "reviewer",
+    "security",
+    "startup_chief"
+  ],
+  "agent_count": 10,
+  "working_styles": [
+    "the-craft.md",
+    "the-sprint.md"
+  ],
+  "validation": "passed locally",
+  "unit_tests": "passed locally",
+  "installer_smoke_test": "passed locally; collision refusal verified",
+  "chatgpt_bundles": 23,
+  "external_validation": {
+    "github_push": "not performed; no repository was created or pushed by this run",
+    "codex_cli_clean_clone": "not run; requires local Codex installation",
+    "chatgpt_skills_upload": "not run; requires an account/workspace with Skills access"
+  }
+}
