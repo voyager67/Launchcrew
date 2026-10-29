@@ -42,16 +42,21 @@
   ],
   "agent_count": 10,
   "working_styles": [
-    "the-craft.md",
-    "the-sprint.md"
+    "styles/the-sprint.md",
+    "styles/the-craft.md"
   ],
-  "validation": "passed locally",
+  "validation": {
+    "validator": "python3 scripts/validate_project.py",
+    "unit_tests": "python3 -m unittest discover -s tests -v",
+    "bundle_check": "python3 scripts/package_chatgpt_skills.py --check",
+    "workflow": ".github/workflows/ci.yml"
+  },
   "unit_tests": "passed locally",
   "installer_smoke_test": "passed locally; collision refusal verified",
   "chatgpt_bundles": 23,
   "external_validation": {
-    "github_push": "not performed; no repository was created or pushed by this run",
-    "codex_cli_clean_clone": "not run; requires local Codex installation",
-    "chatgpt_skills_upload": "not run; requires an account/workspace with Skills access"
+    "github_repository": "published public at https://github.com/voyager67/launchcrew",
+    "codex_cli_clean_clone": "not verified in a clean local Codex CLI environment",
+    "chatgpt_skills_upload": "not verified in a ChatGPT workspace with Skills upload enabled"
   }
 }
