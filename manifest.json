@@ -1,7 +1,7 @@
 {
   "project": "LaunchCrew",
   "version": "0.1.0",
-  "description": "A startup-team workflow kit for Codex CLI and ChatGPT.",
+  "description": "A startup-team workflow kit for Codex CLI and ChatGPT-compatible portable skills.",
   "skills": [
     "accessibility-audit",
     "analyze",
@@ -51,12 +51,8 @@
     "bundle_check": "python3 scripts/package_chatgpt_skills.py --check",
     "workflow": ".github/workflows/ci.yml"
   },
-  "unit_tests": "passed locally",
-  "installer_smoke_test": "passed locally; collision refusal verified",
-  "chatgpt_bundles": 23,
-  "external_validation": {
-    "github_repository": "published public at https://github.com/voyager67/launchcrew",
-    "codex_cli_clean_clone": "not verified in a clean local Codex CLI environment",
-    "chatgpt_skills_upload": "not verified in a ChatGPT workspace with Skills upload enabled"
-  }
+  "validation_scope": [
+    "The validation commands describe repeatable repository checks; consult the GitHub Actions run for a specific commit to inspect its result.",
+    "Codex CLI clean-clone behavior and ChatGPT Skills upload/invocation are product-environment checks and are not inferred from package validation."
+  ]
 }

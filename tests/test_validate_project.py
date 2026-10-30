@@ -123,6 +123,12 @@ class RepositoryAssetTests(unittest.TestCase):
     def test_legacy_duplicate_paths_are_absent(self):
         self.assertEqual(validator.layout_errors(), [])
 
+    def test_manifest_avoids_stale_runtime_status_fields(self):
+        manifest = json.loads((ROOT / "manifest.json").read_text(encoding="utf-8"))
+        for field in ("unit_tests", "installer_smoke_test", "chatgpt_bundles", "external_validation"):
+            self.assertNotIn(field, manifest)
+        self.assertIn("validation_scope", manifest)
+
 
 if __name__ == "__main__":
     unittest.main()
