@@ -29,7 +29,7 @@ Maintain a practical, portable set of reusable skills and Codex project-scoped a
 ```bash
 python3 scripts/validate_project.py
 python3 -m unittest discover -s tests -v
-python3 scripts/package_chatgpt_skills.py
+python3 scripts/package_chatgpt_skills.py --check
 ```
 
 ## Review expectations

@@ -4,6 +4,15 @@ All notable changes are documented here. This project follows a lightweight Keep
 
 ## [Unreleased]
 
+### Fixed
+- Restored release and repository-maintainer reference documents that were present in the original project package.
+- Removed duplicate legacy copies of styles, spec templates, and tests from under `scripts/`, plus an obsolete self-removing repair helper.
+- Added layout regression checks so the duplicate paths cannot silently return.
+
+### Changed
+- Clarified that ChatGPT Skills upload access depends on account/workspace enablement and current rollout.
+- Added a downloadable source snapshot to successful main-branch CI runs.
+
 ### Added
 - Dedicated Codex / ChatGPT compatibility issue form and issue chooser.
 - Community label catalog and automated GitHub label synchronization, including good first issue and help wanted.

@@ -164,7 +164,7 @@ LaunchCrew separates **portable skill content** from **Codex-specific configurat
 2. In an eligible ChatGPT workspace, open **Plugins → Skills → Create → Upload from your computer** and select the ZIP.
 3. Start with `product-discovery`, `specify`, `validate`, `test`, and `review`.
 
-**Availability note:** the [current ChatGPT Skills help article](https://help.openai.com/en/articles/20001066-skills-in-chatgpt) lists eligible Business, Enterprise, Healthcare, and Edu users, subject to workspace settings and rollout. If Skills are not available to you, use the [Projects fallback guide](docs/chatgpt.md).
+**Availability note:** ChatGPT Skills are available only where the feature is enabled for the account and workspace. Upload permissions, roles, and rollout can affect access. Check the [current ChatGPT Skills help article](https://help.openai.com/en/articles/20001066-skills-in-chatgpt) for current eligibility and admin controls. If Skills are not available to you, use the [Projects fallback guide](docs/chatgpt.md).
 
 Regenerate and verify archives after changing skill source:
 
@@ -215,7 +215,7 @@ marketing/                launch copy and outreach drafts
 
 ## 🗺️ Releases and maintenance
 
-Release history is tracked in [`CHANGELOG.md`](CHANGELOG.md). For a copy or fork that you plan to publish under your own GitHub account, see [`docs/publishing.md`](docs/publishing.md). Before tagging a release, run all three validation commands above and confirm the GitHub Actions workflow is green. Package CI does not replace a clean Codex CLI test or a real ChatGPT Skills upload in an eligible workspace.
+Release history is tracked in [`CHANGELOG.md`](CHANGELOG.md). Before tagging, use the [release checklist](RELEASE-CHECKLIST.md) and review the [roadmap](ROADMAP.md). For a copy or fork that you plan to publish under your own GitHub account, see [`docs/publishing.md`](docs/publishing.md). Confirm GitHub Actions is green and complete the product-specific manual checks that apply; package CI does not prove a clean Codex CLI run or a successful ChatGPT Skills upload.
 
 ## 🤝 Contributing
 

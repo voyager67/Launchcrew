@@ -53,3 +53,31 @@ jobs:
           test "$global_count" -eq 23
       - name: Verify ChatGPT skill bundles
         run: python scripts/package_chatgpt_skills.py --check
+      - name: Create source snapshot
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from zipfile import ZIP_DEFLATED, ZipFile
+
+          root = Path(".")
+          output = Path("/tmp/launchcrew-source.zip")
+          with ZipFile(output, "w", compression=ZIP_DEFLATED, compresslevel=9) as archive:
+              for path in sorted(root.rglob("*")):
+                  if not path.is_file():
+                      continue
+                  if ".git" in path.parts or "__pycache__" in path.parts:
+                      continue
+                  if path.suffix in {".pyc", ".pyo"} or path.name == ".DS_Store":
+                      continue
+                  archive.write(path, (Path("LaunchCrew") / path).as_posix())
+          print(f"Created {output} ({output.stat().st_size} bytes)")
+          PY
+      - name: Upload source snapshot
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/upload-artifact@v4
+        with:
+          name: launchcrew-source-${{ github.sha }}
+          path: /tmp/launchcrew-source.zip
+          if-no-files-found: error
+          retention-days: 14

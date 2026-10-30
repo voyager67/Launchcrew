@@ -111,5 +111,18 @@ class RepositoryAssetTests(unittest.TestCase):
             self.assertIn("Stale bundle", reason)
 
 
+    def test_maintainer_and_release_documents_exist(self):
+        for relative in (
+            ".github/README.md",
+            "RELEASE-CHECKLIST.md",
+            "REPOSITORY-METADATA.md",
+            "ROADMAP.md",
+        ):
+            self.assertTrue((ROOT / relative).is_file(), relative)
+
+    def test_legacy_duplicate_paths_are_absent(self):
+        self.assertEqual(validator.layout_errors(), [])
+
+
 if __name__ == "__main__":
     unittest.main()

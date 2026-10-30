@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SKILLS = ROOT / ".agents" / "skills"
 REQUIRED = [
     "README.md", "AGENTS.md", "LICENSE", "CONTRIBUTING.md", "SECURITY.md",
+    ".github/README.md", "RELEASE-CHECKLIST.md", "REPOSITORY-METADATA.md", "ROADMAP.md",
     "CODE_OF_CONDUCT.md", "CHANGELOG.md", "manifest.json",
     ".github/workflows/ci.yml", ".github/workflows/sync-labels.yml",
     ".github/labels.json",
@@ -151,6 +152,25 @@ def broken_local_markdown_links(markdown_paths: list[Path]) -> list[str]:
     return errors
 
 
+def layout_errors() -> list[str]:
+    """Reject duplicate legacy content paths and one-off repair utilities."""
+    obsolete = [
+        "scripts/styles/the-sprint.md",
+        "scripts/styles/the-craft.md",
+        "scripts/templates/spec/requirements.md",
+        "scripts/templates/spec/design.md",
+        "scripts/templates/spec/plan.md",
+        "scripts/templates/spec/acceptance.md",
+        "scripts/tests/test_validate_project.py",
+        "apply-update.ps1",
+    ]
+    return [
+        f"obsolete or duplicate repository path: {relative}"
+        for relative in obsolete
+        if (ROOT / relative).exists()
+    ]
+
+
 def main() -> int:
     errors = []
     for item in REQUIRED:
@@ -207,6 +227,7 @@ def main() -> int:
 
     errors.extend(manifest_errors(skill_names, agent_names))
     errors.extend(community_config_errors())
+    errors.extend(layout_errors())
     markdown_to_check = [
         ROOT / "README.md", ROOT / "CONTRIBUTING.md",
         *sorted((ROOT / "docs").glob("*.md"))
