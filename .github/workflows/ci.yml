@@ -23,5 +23,28 @@ jobs:
         run: python scripts/validate_project.py
       - name: Run unit tests
         run: python -m unittest discover -s tests -v
-      - name: Rebuild ChatGPT skill bundles
+      - name: Smoke-test Codex skill installer
+        shell: bash
+        run: |
+          set -euo pipefail
+          sandbox="$(mktemp -d)"
+          trap 'rm -rf "$sandbox"' EXIT
+
+          mkdir "$sandbox/project"
+          ./scripts/install.sh --project "$sandbox/project"
+          project_count="$(find "$sandbox/project/.agents/skills" -mindepth 2 -maxdepth 2 -name SKILL.md | wc -l | tr -d ' ')"
+          test "$project_count" -eq 23
+
+          if ./scripts/install.sh --project "$sandbox/project"; then
+            echo "Installer unexpectedly overwrote existing skills." >&2
+            exit 1
+          else
+            status=$?
+            test "$status" -eq 2
+          fi
+
+          CODEX_HOME="$sandbox/codex" ./scripts/install.sh --global
+          global_count="$(find "$sandbox/codex/skills" -mindepth 2 -maxdepth 2 -name SKILL.md | wc -l | tr -d ' ')"
+          test "$global_count" -eq 23
+      - name: Verify ChatGPT skill bundles
         run: python scripts/package_chatgpt_skills.py --check
