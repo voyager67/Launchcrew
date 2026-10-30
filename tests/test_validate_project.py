@@ -111,12 +111,20 @@ class RepositoryAssetTests(unittest.TestCase):
             self.assertIn("Stale bundle", reason)
 
 
-    def test_maintainer_and_release_documents_exist(self):
+    def test_core_project_documents_exist(self):
         for relative in (
-            ".github/README.md",
-            "RELEASE-CHECKLIST.md",
-            "REPOSITORY-METADATA.md",
-            "ROADMAP.md",
+            "AGENTS.md",
+            "README.md",
+            "CONTRIBUTING.md",
+            "SECURITY.md",
+            "CODE_OF_CONDUCT.md",
+            "CHANGELOG.md",
+            "manifest.json",
+            "docs/architecture.md",
+            "docs/codex.md",
+            "docs/chatgpt.md",
+            "docs/publishing.md",
+            "docs/skills.md",
         ):
             self.assertTrue((ROOT / relative).is_file(), relative)
 
