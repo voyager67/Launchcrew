@@ -213,9 +213,9 @@ docs/                     setup, architecture, and skill catalog
 marketing/                launch copy and outreach drafts
 ```
 
-## 🗺️ Roadmap and releases
+## 🗺️ Releases and maintenance
 
-Review [`ROADMAP.md`](ROADMAP.md) for project priorities and [`RELEASE-CHECKLIST.md`](RELEASE-CHECKLIST.md) before tagging or announcing a release. Keep claims aligned with checks that have actually passed; the package CI does not replace a clean Codex CLI test or a real ChatGPT Skills upload.
+Release history is tracked in [`CHANGELOG.md`](CHANGELOG.md). For a copy or fork that you plan to publish under your own GitHub account, see [`docs/publishing.md`](docs/publishing.md). Before tagging a release, run all three validation commands above and confirm the GitHub Actions workflow is green. Package CI does not replace a clean Codex CLI test or a real ChatGPT Skills upload in an eligible workspace.
 
 ## 🤝 Contributing
 
