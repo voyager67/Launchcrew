@@ -4,345 +4,350 @@
 
 # LaunchCrew
 
-### Your AI startup team. From first idea to shipped software.
+### Give your AI coding workflow a crew. Not more chaos.
 
-**A practical multi-agent workflow kit for Codex CLI, with portable skills for ChatGPT.**
+**A spec-first startup-team toolkit for Codex CLI, with portable skill workflows for ChatGPT.**
 
-Turn scattered AI coding sessions into a repeatable way to discover problems, shape products, plan work, build in focused slices, verify results, and ship with confidence.
+Turn an idea into a plan, split the work intelligently, build in small slices, and verify the result before calling it done. LaunchCrew brings reusable skills, focused specialist roles, and practical delivery guardrails into one open-source repository.
 
 <p>
   <a href="https://github.com/voyager67/Launchcrew/stargazers"><img src="https://img.shields.io/github/stars/voyager67/Launchcrew?style=for-the-badge&logo=github&label=STAR%20THIS%20PROJECT" alt="Star LaunchCrew"></a>
-  <a href="https://github.com/voyager67/Launchcrew/actions/workflows/ci.yml"><img src="https://img.shields.io/github/actions/workflow/status/voyager67/Launchcrew/ci.yml?branch=main&style=for-the-badge&label=BUILD" alt="Build status"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-16a34a?style=for-the-badge" alt="MIT License"></a>
+  <a href="https://github.com/voyager67/Launchcrew/fork"><img src="https://img.shields.io/badge/FORK-Adapt%20your%20crew-8250df?style=for-the-badge&logo=github" alt="Fork LaunchCrew"></a>
 </p>
-<p>
-  <a href="https://developers.openai.com/codex/"><img src="https://img.shields.io/badge/BUILT%20FOR-CODEX%20CLI-111827?style=flat-square" alt="Built for Codex CLI"></a>
-  <a href="https://agentskills.io/"><img src="https://img.shields.io/badge/FORMAT-PORTABLE%20SKILLS-635bff?style=flat-square" alt="Portable skills"></a>
-  <img src="https://img.shields.io/badge/23-SKILLS-0f766e?style=flat-square" alt="23 skills">
-  <img src="https://img.shields.io/badge/10-SPECIALISTS-b45309?style=flat-square" alt="10 specialist profiles">
-</p>
+
+[![CI](https://github.com/voyager67/Launchcrew/actions/workflows/ci.yml/badge.svg)](https://github.com/voyager67/Launchcrew/actions/workflows/ci.yml)
+[![MIT License](https://img.shields.io/badge/license-MIT-2ea44f.svg)](LICENSE)
+[![Codex CLI](https://img.shields.io/badge/primary-Codex%20CLI-111827.svg)](https://developers.openai.com/codex/)
+[![Agent Skills](https://img.shields.io/badge/portable-Agent%20Skills-6f42c1.svg)](https://agentskills.io/)
+[![Skills](https://img.shields.io/badge/skills-23-0969da.svg)](.agents/skills/)
+[![Codex roles](https://img.shields.io/badge/Codex%20specialists-10-0969da.svg)](.codex/agents/)
+[![License](https://img.shields.io/github/license/voyager67/Launchcrew)](LICENSE)
 
 **23 reusable skills · 10 Codex specialist profiles · 2 working styles · MIT licensed**
 
-[🚀 Get started](#-get-started-in-60-seconds) · [See the workflow](#-from-idea-to-shipped-work) · [Explore skills](#-the-skill-library) · [Meet the agents](#-meet-your-specialist-team) · [ChatGPT setup](#-use-the-skills-in-chatgpt)
+[Get started](#-get-started-in-60-seconds) · [See the workflow](#-from-idea-to-shipped) · [Explore skills](#-pick-your-skill) · [Meet the agents](#-meet-the-specialist-crew) · [ChatGPT setup](#-use-it-with-chatgpt) · [Contribute](#-help-make-the-crew-better)
 
 </div>
 
 ---
 
-## The problem isn't writing code. It's shipping the right thing.
+## The problem: AI can write code. Shipping still takes a team.
 
-AI can produce code quickly. But useful software still needs a real problem, clear scope, sound decisions, tests that run, and an honest review before release.
+A good result needs more than a clever prompt. Someone has to understand the user problem, define scope, make architectural decisions, implement safely, test the change, review it independently, and communicate what actually happened.
 
-**LaunchCrew gives your AI workflow a team structure and a delivery process.** It brings together reusable skills, focused Codex agent profiles, project guidance, spec templates, validation scripts, and portable ChatGPT skill packages.
+LaunchCrew gives your AI-assisted workflow a repeatable operating rhythm:
 
-No black-box orchestration. No claims of magical autonomy. Just an inspectable toolkit you can adapt to your project.
+- **Think before building.** Turn vague ideas into testable requirements and explicit non-goals.
+- **Delegate with intent.** Use specialist roles for independent research, architecture, QA, security, and product work.
+- **Keep the work resumable.** Save specs, decisions, and progress as files—not just chat messages.
+- **Prove the result.** Run relevant checks and report real evidence, limitations, and remaining risks.
 
-## ✨ What you get
+> **Not another mega-prompt. Not an opaque autonomous runtime.** LaunchCrew is an inspectable toolkit of workflows and role instructions that you can adapt to your own projects.
 
-<table>
-<tr>
-<td width="50%" valign="top">
+## ⚡ Get started in 60 seconds
 
-### 🧭 Product thinking
-Turn vague ideas into user problems, evidence, requirements, non-goals, and measurable outcomes.
+### Option A — Try the full LaunchCrew repository with Codex
 
-### 🏗️ Spec-first engineering
-Create implementation plans, architecture decisions, task slices, and acceptance criteria before large changes.
-
-### 🧑‍🚀 Specialist perspectives
-Use focused roles for product, architecture, engineering, QA, security, design, research, and operations.
-
-</td>
-<td width="50%" valign="top">
-
-### 🧪 Evidence-led quality
-Run relevant checks, report actual results, and surface risks instead of saying “it works” without proof.
-
-### 🔁 Repeatable workflows
-Keep plans and progress in files so work can resume beyond a single chat session.
-
-### 🌍 Portable skill library
-Use the same focused skill content in Codex and package individual skills for ChatGPT environments where Skills are enabled.
-
-</td>
-</tr>
-</table>
-
-> **The LaunchCrew rule:** parallelize independent thinking; keep conflicting edits under clear ownership. More agents do not automatically mean better work.
-
-## 🚀 Get started in 60 seconds
-
-### 1. Clone LaunchCrew
-
-```bash
+\`\`\`bash
 git clone https://github.com/voyager67/Launchcrew.git
 cd Launchcrew
-```
-
-### 2. Start Codex CLI in the repository
-
-Install and authenticate [Codex CLI](https://developers.openai.com/codex/), then run:
-
-```bash
 codex
-```
+\`\`\`
 
-LaunchCrew provides:
-- `AGENTS.md` — durable project-level guidance.
-- `.agents/skills/` — 23 reusable skills.
-- `.codex/agents/` — 10 optional specialist profiles.
-- `templates/spec/` — reusable planning templates.
+Start with a feature that has more than one requirement:
 
-Custom-agent behavior depends on your installed Codex version and configuration. See the [Codex setup guide](docs/codex.md).
+\`\`\`text
+$specify Build an invitation-based sign-up flow with expiring tokens,
+role-aware permissions, audit events, and tests.
+\`\`\`
 
-### 3. Give it a real task
+Then use the spec ID and files created by the workflow:
 
-Try this prompt:
-
-```text
-$specify Add invitation-based sign-up with expiring tokens,
-audit events, and tests for invalid and expired invitations.
-```
-
-Then use the spec ID and paths created in your repository:
-
-```text
+\`\`\`text
 $validate <spec-id>
 $implement <spec-id>
 $test <spec-id>
 $review
-```
+\`\`\`
 
-For a tiny, low-risk fix, don't over-process it. Use the smallest workflow that fits.
+Use the lightest workflow that fits the task. A one-line fix does not need a full specification.
+
+### Option B — Add LaunchCrew skills to a project you already have
+
+Clone LaunchCrew, then run the installer from its directory. The target project must already exist.
+
+\`\`\`bash
+./scripts/install.sh --project /path/to/your-project
+\`\`\`
+
+Or install the skills to your personal Codex skills directory:
+
+\`\`\`bash
+./scripts/install.sh --global
+\`\`\`
+
+The installer **refuses to overwrite skill folders with matching names**. It copies the skills; it does not replace your project's \`AGENTS.md\` or Codex configuration.
 
 <details>
-<summary><strong>🧪 Want to verify the installation first?</strong></summary>
+<summary><strong>Windows / manual setup and installation details</strong></summary>
 
-Run these from the repository root:
+The shell installer is written for Bash. On Windows, use a Bash environment such as Git Bash or WSL, or copy the selected skill folders from \`.agents/skills/\` into your project's \`.agents/skills/\` directory. Review existing folders first—do not overwrite your own skills.
 
-```bash
-python3 scripts/validate_project.py
-python3 -m unittest discover -s tests -v
-python3 scripts/package_chatgpt_skills.py --check
-```
-
-See [validation details](#-validate-before-you-trust-it).
+For exact options and safety behavior, see the [Codex setup guide](docs/codex.md).
 
 </details>
 
-## 🔄 From idea to shipped work
+## 🚀 From idea to shipped
 
-The workflow is intentionally simple:
-
-```mermaid
+\`\`\`mermaid
 flowchart LR
-    A["💡 Discover"] --> B["📝 Specify"]
+    A["💡 Discover"] --> B["🧭 Specify"]
     B --> C["🔎 Validate"]
     C --> D["🛠️ Implement"]
     D --> E["🧪 Test"]
-    E --> F["👀 Review"]
-    F --> G["🚀 Ship"]
-    F -. "Findings" .-> D
-```
+    E --> F["🔍 Review"]
+    F --> G["📦 Ship"]
+    F -. findings .-> D
+    E -. failures .-> D
+\`\`\`
 
-| Stage | Start with | Deliverable |
+| Stage | What the crew does | Typical artifact |
 |---|---|---|
-| Discover | `$product-discovery`, `$research-brief` | Problem, evidence, assumptions, success measures |
-| Plan | `$specify`, `$validate` | Requirements, trade-offs, ordered tasks, acceptance criteria |
-| Build | `$implement` | Small, scoped changes and resumable progress |
-| Prove | `$test` | Relevant commands, actual results, disclosed failures |
-| Review | `$review`, specialist audits | Prioritized findings with evidence |
-| Maintain | `$analyze`, `$debug`, `$refactor`, `$document` | Root-cause fixes and maintainable code |
-| Operate | `$release-manager`, `$incident-response`, `$startup-operations` | Release readiness, incident records, operating decisions |
-| Launch | `$growth-launch` | Honest launch messaging and a feedback plan |
+| Discover | Clarifies users, pain, alternatives, constraints, and evidence. | Product or research brief |
+| Specify | Defines requirements, non-goals, design, task order, and acceptance criteria. | Requirements, design, plan |
+| Validate | Finds gaps in scope, feasibility, testability, and risk before implementation. | Readiness assessment |
+| Implement | Delivers bounded slices and preserves progress. | Code changes and progress notes |
+| Test | Runs risk-appropriate checks and adds regression coverage. | Verification evidence |
+| Review | Inspects the result independently and prioritizes findings. | Review findings |
+| Ship | Checks release readiness, communication, monitoring, and rollback. | Release checklist and notes |
 
 ### Choose the right amount of process
 
-- **Direct** — a small, obvious change. Inspect, change, test, summarize.
-- **Incremental** — a feature with connected parts. Plan slices and verify each one.
-- **Factory** — broad work with independent deliverables. Define ownership, dependencies, acceptance scenarios, and integration gates.
+<details open>
+<summary><strong>Direct — small changes</strong></summary>
 
-Read the [architecture and workflow model](docs/architecture.md) for the full approach.
+Inspect the relevant area, make the smallest safe change, run targeted checks, and summarize what changed. Skip heavyweight planning when it adds no value.
 
-## 🧰 The skill library
-
-**23 focused skills. Load what the task needs—not everything, every time.**
-
-| Focus | Skills |
-|---|---|
-| **Plan & build** | `constitution`, `specify`, `validate`, `implement`, `test`, `review` |
-| **Understand & maintain** | `analyze`, `debug`, `refactor`, `document`, `architecture-design` |
-| **Product & research** | `product-discovery`, `research-brief`, `startup-operations`, `growth-launch` |
-| **Quality & trust** | `security-audit`, `performance-audit`, `accessibility-audit`, `ui-ux` |
-| **AI & data** | `data-science`, `eval-design` |
-| **Release & reliability** | `release-manager`, `incident-response` |
-
+</details>
 <details>
-<summary><strong>Browse all 23 skills and their downloadable ChatGPT packages</strong></summary>
+<summary><strong>Incremental — features with connected parts</strong></summary>
 
-| Skill | Source | ChatGPT ZIP |
-|---|---|---|
-| accessibility-audit | [Open](.agents/skills/accessibility-audit/SKILL.md) | [Download](dist/chatgpt-skills/accessibility-audit.zip) |
-| analyze | [Open](.agents/skills/analyze/SKILL.md) | [Download](dist/chatgpt-skills/analyze.zip) |
-| architecture-design | [Open](.agents/skills/architecture-design/SKILL.md) | [Download](dist/chatgpt-skills/architecture-design.zip) |
-| constitution | [Open](.agents/skills/constitution/SKILL.md) | [Download](dist/chatgpt-skills/constitution.zip) |
-| data-science | [Open](.agents/skills/data-science/SKILL.md) | [Download](dist/chatgpt-skills/data-science.zip) |
-| debug | [Open](.agents/skills/debug/SKILL.md) | [Download](dist/chatgpt-skills/debug.zip) |
-| document | [Open](.agents/skills/document/SKILL.md) | [Download](dist/chatgpt-skills/document.zip) |
-| eval-design | [Open](.agents/skills/eval-design/SKILL.md) | [Download](dist/chatgpt-skills/eval-design.zip) |
-| growth-launch | [Open](.agents/skills/growth-launch/SKILL.md) | [Download](dist/chatgpt-skills/growth-launch.zip) |
-| implement | [Open](.agents/skills/implement/SKILL.md) | [Download](dist/chatgpt-skills/implement.zip) |
-| incident-response | [Open](.agents/skills/incident-response/SKILL.md) | [Download](dist/chatgpt-skills/incident-response.zip) |
-| performance-audit | [Open](.agents/skills/performance-audit/SKILL.md) | [Download](dist/chatgpt-skills/performance-audit.zip) |
-| product-discovery | [Open](.agents/skills/product-discovery/SKILL.md) | [Download](dist/chatgpt-skills/product-discovery.zip) |
-| refactor | [Open](.agents/skills/refactor/SKILL.md) | [Download](dist/chatgpt-skills/refactor.zip) |
-| release-manager | [Open](.agents/skills/release-manager/SKILL.md) | [Download](dist/chatgpt-skills/release-manager.zip) |
-| research-brief | [Open](.agents/skills/research-brief/SKILL.md) | [Download](dist/chatgpt-skills/research-brief.zip) |
-| review | [Open](.agents/skills/review/SKILL.md) | [Download](dist/chatgpt-skills/review.zip) |
-| security-audit | [Open](.agents/skills/security-audit/SKILL.md) | [Download](dist/chatgpt-skills/security-audit.zip) |
-| specify | [Open](.agents/skills/specify/SKILL.md) | [Download](dist/chatgpt-skills/specify.zip) |
-| startup-operations | [Open](.agents/skills/startup-operations/SKILL.md) | [Download](dist/chatgpt-skills/startup-operations.zip) |
-| test | [Open](.agents/skills/test/SKILL.md) | [Download](dist/chatgpt-skills/test.zip) |
-| ui-ux | [Open](.agents/skills/ui-ux/SKILL.md) | [Download](dist/chatgpt-skills/ui-ux.zip) |
-| validate | [Open](.agents/skills/validate/SKILL.md) | [Download](dist/chatgpt-skills/validate.zip) |
+Create a short spec, define acceptance scenarios, break work into ordered slices, and verify each slice before moving on.
+
+</details>
+<details>
+<summary><strong>Factory — broad work with independent deliverables</strong></summary>
+
+Define ownership, dependencies, file boundaries, and integration checks. Delegate independent investigations or separately owned tasks; integrate and verify before shipping.
 
 </details>
 
-See the [skill catalog and usage guidance](docs/skills.md).
+The [architecture guide](docs/architecture.md) explains the workflow model, parallelization contract, and recommended way to keep work resumable.
 
-## 🧑‍🚀 Meet your specialist team
+## 🧰 Pick your skill
 
-Ten optional Codex profiles bring focused perspectives to your work. They are **instructions for Codex**, not separately hosted agents, extra subscriptions, or new tool permissions.
+There are 23 focused skills. Each one has a trigger, a procedure, guardrails, and an expected output. Load the skill that matches the job—**you do not need all 23 for every task.**
 
-| Specialist | Owns the perspective |
+<details open>
+<summary><strong>🧭 Product, planning & research</strong></summary>
+
+| Skill | Use it to… |
 |---|---|
-| `startup_chief` | Coordination, priorities, and integration |
-| `product_analyst` | User needs, requirements, and outcomes |
-| `architect` | System boundaries, interfaces, and trade-offs |
-| `engineer` | Bounded implementation and relevant tests |
-| `qa` | Test strategy, reproduction, and regression risk |
-| `reviewer` | Independent review and prioritized findings |
-| `security` | Trust boundaries and risk-ranked remediations |
-| `designer` | UX flows, interface states, and accessibility |
-| `platform` | CI, deployment, observability, reliability, rollback |
-| `researcher` | Technical research and version-sensitive claims |
+| \`constitution\` | Set project principles, constraints, and decision rules. |
+| \`product-discovery\` | Validate the problem, users, alternatives, and outcomes. |
+| \`research-brief\` | Produce source-backed technical or market research. |
+| \`specify\` | Turn an idea or change into requirements, design, plan, and acceptance criteria. |
+| \`validate\` | Check whether a proposal is complete, feasible, and testable. |
+| \`architecture-design\` | Compare system designs, boundaries, and trade-offs. |
 
-**Good delegation is deliberate:** assign independent work, keep file ownership clear, avoid simultaneous edits to the same files, and verify the integrated result.
+</details>
+<details>
+<summary><strong>🛠️ Engineering & maintenance</strong></summary>
 
-## 💬 Use the skills in ChatGPT
+| Skill | Use it to… |
+|---|---|
+| \`implement\` | Deliver approved work in small, verifiable slices. |
+| \`analyze\` | Map an unfamiliar codebase and its execution paths. |
+| \`debug\` | Find root causes through reproduction and focused experiments. |
+| \`refactor\` | Improve structure while preserving behavior. |
+| \`document\` | Keep docs accurate and synchronized with the code. |
 
-LaunchCrew keeps portable skill content separate from Codex-specific configuration.
+</details>
+<details>
+<summary><strong>🧪 Quality, security & experience</strong></summary>
 
-| Environment | Included | Boundary |
+| Skill | Use it to… |
+|---|---|
+| \`test\` | Design and run risk-appropriate verification. |
+| \`review\` | Independently inspect changes and prioritize findings. |
+| \`security-audit\` | Assess trust boundaries and security risks. |
+| \`performance-audit\` | Measure bottlenecks before optimizing. |
+| \`accessibility-audit\` | Find accessibility barriers and testable fixes. |
+| \`ui-ux\` | Define clear flows and interaction states. |
+
+</details>
+<details>
+<summary><strong>🧠 AI, data & operations</strong></summary>
+
+| Skill | Use it to… |
+|---|---|
+| \`data-science\` | Plan reproducible analysis and ML experiments. |
+| \`eval-design\` | Build evaluations for AI models, agents, and workflows. |
+| \`startup-operations\` | Connect priorities to metrics, cadence, and constraints. |
+| \`incident-response\` | Investigate, contain, recover, and learn from incidents. |
+| \`release-manager\` | Prepare releases, rollout, monitoring, and rollback. |
+| \`growth-launch\` | Create an honest launch plan and feedback loop. |
+
+</details>
+
+**Browse the source:** [All 23 skill folders](.agents/skills/) · [Full skill catalog and outputs](docs/skills.md)
+
+## 🧑‍🚀 Meet the specialist crew
+
+LaunchCrew includes 10 optional Codex project-scoped agent profiles. They define focused responsibilities—not separate hosted services or additional tool permissions.
+
+<details open>
+<summary><strong>View all 10 specialist roles</strong></summary>
+
+| Specialist | Focus |
+|---|---|
+| \`startup_chief\` | Coordinates the plan, assigns bounded work, and integrates findings. |
+| \`product_analyst\` | User needs, requirements, priorities, and outcome metrics. |
+| \`architect\` | System boundaries, interfaces, and technical trade-offs. |
+| \`engineer\` | Focused implementation slices and relevant tests. |
+| \`qa\` | Test strategy, reproduction, and regression risk. |
+| \`reviewer\` | Independent, read-only review and prioritized findings. |
+| \`security\` | Trust boundaries and risk-ranked security improvements. |
+| \`designer\` | UX flows, interaction states, and accessibility. |
+| \`platform\` | CI, deployment, observability, reliability, and rollback. |
+| \`researcher\` | Technical research and version-sensitive claims. |
+
+</details>
+
+Find the profiles in [\`.codex/agents/\`](.codex/agents/). Their availability depends on your Codex version and configuration. Keep file ownership explicit: parallelize independent investigation, not simultaneous edits to the same files.
+
+## 🎛️ Set the team's working style
+
+Choose how you want the crew to communicate. These profiles change tone and explanation depth—not the quality bar.
+
+<div align="center">
+
+| ⚡ The Sprint | 🧩 The Craft |
+|---|---|
+| Concise, decisive, delivery-focused. | Explanatory, careful, trade-off-aware. |
+| [Open The Sprint](styles/the-sprint.md) | [Open The Craft](styles/the-craft.md) |
+
+</div>
+
+## 💬 Use it with ChatGPT
+
+LaunchCrew keeps portable skill content separate from Codex-only configuration.
+
+| ChatGPT surface | How to use LaunchCrew | Boundary |
 |---|---|---|
-| **Codex CLI** | Repo-local skills, `AGENTS.md`, optional agent profiles, shell-based checks | Behavior depends on Codex version and configuration |
-| **ChatGPT Skills** | One ZIP per skill in `dist/chatgpt-skills/` | Does not install Codex agents, grant shell access, or change repository permissions |
-| **ChatGPT Projects** | Reusable Project instructions, selected skill files, project documentation | Instructions alone cannot edit a local repository or grant unconnected tools |
+| **ChatGPT Skills** | Upload individual skill ZIPs from \`dist/chatgpt-skills/\` where Skills are enabled. | ZIPs contain skill instructions—not Codex agents, shell access, or tool permissions. |
+| **ChatGPT Projects** | Add the Project instructions and attach only the skill files relevant to your work. | A Project cannot edit a local repository it cannot access. |
 
-### Get an individual ChatGPT skill
+### Uploadable skill bundles
 
-1. Open the `dist/chatgpt-skills/` folder.
-2. Choose a skill ZIP—for example, [specify.zip](dist/chatgpt-skills/specify.zip).
-3. If ChatGPT Skills are enabled for your account/workspace, follow the current [official Skills instructions](https://help.openai.com/en/articles/20001066-skills-in-chatgpt) to upload it.
-4. Start with `product-discovery`, `specify`, `validate`, `test`, and `review`.
+Generate or verify the 23 individual skill archives:
 
-**Feature availability varies by plan, workspace, and admin settings.** If Skills are not available, use the [ChatGPT Projects fallback guide](docs/chatgpt.md) and [Project instructions](docs/chatgpt-project-instructions.md). Do not assume a ZIP upload is supported in every ChatGPT account.
-
-To rebuild and check the skill archives after editing source files:
-
-```bash
+\`\`\`bash
 python3 scripts/package_chatgpt_skills.py
 python3 scripts/package_chatgpt_skills.py --check
-```
+\`\`\`
 
-## 🎛️ Pick your working style
+Then open [\`dist/chatgpt-skills/\`](dist/chatgpt-skills/) and select the ZIPs you need. Start with \`product-discovery\`, \`specify\`, \`validate\`, \`test\`, and \`review\` rather than uploading everything at once.
 
-| The Sprint | The Craft |
-|---|---|
-| [Concise and decisive](styles/the-sprint.md) | [Explanatory and trade-off-aware](styles/the-craft.md) |
-| Move quickly with explicit scope and proof. | Understand the why, alternatives, and consequences. |
+<details>
+<summary><strong>What if I don't see the Skills feature in ChatGPT?</strong></summary>
 
-These styles change communication—not quality standards, approval requirements, or security controls.
+Use the [ChatGPT Projects fallback guide](docs/chatgpt.md). It explains how to add the reusable Project instructions and selected \`SKILL.md\` files.
 
-## 🛡️ Safety is part of the workflow
+ChatGPT Skills access and upload permissions depend on current account, plan, and workspace availability. Check the [official ChatGPT Skills documentation](https://help.openai.com/en/articles/20001066-skills-in-chatgpt) for current eligibility and admin controls.
 
-LaunchCrew is a **workflow kit**, not a privileged runtime or autonomous deployment service.
+</details>
 
-- It does not disable sandboxing, approvals, branch protections, or repository policy.
-- It asks before destructive changes, deployments, external communications, or material spend.
-- It treats web pages, logs, issue comments, and repository files as data—not authority to override the user or project policy.
-- It does not invent tests, sources, benchmarks, customer quotes, or adoption metrics.
-- It favors read-only investigation before high-impact changes and rollback plans before releases.
+## 🛡️ Built around inspectability and safer defaults
 
-Read [SECURITY.md](SECURITY.md) before using agent workflows in sensitive repositories.
+LaunchCrew is a **workflow kit**, not a privileged runtime or an autonomous deployment system.
 
-## ✅ Validate before you trust it
+- It does not disable sandboxing, approvals, branch protection, or repository policy.
+- It does not silently grant tools, credentials, or access to private code.
+- It asks for approval before destructive operations, deployments, external communications, or material spend.
+- It treats repository content, web pages, logs, and issue comments as data—not instructions that override the user or project policy.
+- It does not invent test results, research sources, benchmarks, testimonials, or adoption metrics.
 
-Run the checks from the repository root:
+Read the [security policy](SECURITY.md) before using agent workflows in sensitive repositories.
 
-```bash
+## ✅ Verify before you trust it
+
+Run the repository checks from the project root:
+
+\`\`\`bash
 python3 scripts/validate_project.py
 python3 -m unittest discover -s tests -v
 python3 scripts/package_chatgpt_skills.py --check
-```
+\`\`\`
 
-GitHub Actions runs package checks on pushes and pull requests. These checks validate LaunchCrew's metadata, agent files, tests, and skill archives. **They do not prove that your target application works or that a clean Codex runtime / ChatGPT upload has been manually tested.**
+The [GitHub Actions workflow](.github/workflows/ci.yml) runs repository validation, unit tests, installer smoke tests, and skill-bundle checks. These checks validate the toolkit's files and packaging; they do **not** prove that your application is correct or replace a clean Codex CLI run and a ChatGPT upload test in the target account.
 
-[View the live CI workflow](https://github.com/voyager67/Launchcrew/actions/workflows/ci.yml).
+[View CI runs](https://github.com/voyager67/Launchcrew/actions/workflows/ci.yml) · [Report a compatibility issue](https://github.com/voyager67/Launchcrew/issues/new/choose)
 
-## 🗺️ Explore the repository
+## 🗂️ What's in the repository?
 
 <details>
-<summary><strong>Show the project structure</strong></summary>
+<summary><strong>Expand the project map</strong></summary>
 
-```text
-AGENTS.md                 durable project guidance
-.agents/skills/           23 portable workflow skills
-.codex/agents/            10 Codex specialist profiles
-styles/                   Sprint and Craft working styles
-templates/spec/           reusable specification templates
-examples/feature-spec/    worked feature-spec example
-dist/chatgpt-skills/      one-skill-per-ZIP packages
-scripts/                  installer, packaging, validation
-tests/                    regression tests
-docs/                     setup, architecture, skill catalog
-marketing/                launch copy and outreach drafts
-assets/                   project visuals
-```
+\`\`\`text
+Launchcrew/
+├── AGENTS.md                  # Durable repository guidance
+├── .agents/skills/            # 23 portable workflow skills
+├── .codex/agents/             # 10 Codex specialist profiles
+├── styles/                    # Sprint and Craft working styles
+├── templates/spec/             # Reusable specification templates
+├── examples/feature-spec/      # Worked feature-spec example
+├── dist/chatgpt-skills/        # Individual skill ZIP archives
+├── scripts/                    # Installer, packaging, validator
+├── tests/                      # Automated tests
+├── docs/                       # Setup, architecture, skill catalog
+├── assets/                     # Project banner
+└── marketing/                  # Launch copy and outreach drafts
+\`\`\`
 
 </details>
 
-| Want to… | Go here |
-|---|---|
-| Understand the design | [Architecture](docs/architecture.md) |
-| Set up Codex | [Codex guide](docs/codex.md) |
-| Set up ChatGPT | [ChatGPT guide](docs/chatgpt.md) |
-| Reuse Project instructions | [ChatGPT Project instructions](docs/chatgpt-project-instructions.md) |
-| Browse all skills | [Skill catalog](docs/skills.md) |
-| Publish a fork | [Publishing guide](docs/publishing.md) |
-| See changes | [Changelog](CHANGELOG.md) |
-| Contribute | [Contribution guide](CONTRIBUTING.md) |
+## 🌱 Help make the crew better
 
-## 🤝 Help make LaunchCrew better
+The best way to improve LaunchCrew is to use it on a real task and tell us where it helped—or got in the way.
 
-Found a bug? Have a compatibility report? Built a useful workflow? Contributions are welcome.
+- **Found a bug?** [Open a bug report](https://github.com/voyager67/Launchcrew/issues/new?template=bug_report.yml).
+- **Have an idea?** [Suggest a feature](https://github.com/voyager67/Launchcrew/issues/new?template=feature_request.yml).
+- **Something doesn't work in your environment?** [Report compatibility](https://github.com/voyager67/Launchcrew/issues/new?template=compatibility_report.yml).
+- **Want to contribute?** Start with [CONTRIBUTING.md](CONTRIBUTING.md).
 
-- [Report a bug or compatibility issue](https://github.com/voyager67/Launchcrew/issues/new/choose)
-- [Browse open issues](https://github.com/voyager67/Launchcrew/issues)
-- [Read the contribution guide](CONTRIBUTING.md)
-- [Open a pull request](https://github.com/voyager67/Launchcrew/compare)
+<div align="center">
 
-If LaunchCrew helps you ship something, **give the repository a star**, try it on a real task, and share a reproducible improvement. A genuine use case or thoughtful issue helps more than inflated claims or mass promotion.
+### If LaunchCrew makes your next build clearer, safer, or easier to resume…
 
-<p align="center">
-  <a href="https://github.com/voyager67/Launchcrew/stargazers">
-    <img src="https://img.shields.io/badge/LIKE%20THE%20WORK%3F-GIVE%20IT%20A%20STAR-f59e0b?style=for-the-badge&logo=github&logoColor=white" alt="Give LaunchCrew a star">
-  </a>
-</p>
+<a href="https://github.com/voyager67/Launchcrew/stargazers">
+  <img src="https://img.shields.io/badge/⭐%20Star%20LaunchCrew-Help%20others%20discover%20it-f5a623?style=for-the-badge" alt="Star LaunchCrew on GitHub">
+</a>
 
-## License and independence
+A star helps people discover the project. A tested issue, thoughtful suggestion, or useful pull request helps make it better.
 
-LaunchCrew is an independent open-source project and is not affiliated with or endorsed by OpenAI or the maintainers of any similarly named project. Product and organization names belong to their respective owners.
+[Star](https://github.com/voyager67/Launchcrew/stargazers) · [Fork](https://github.com/voyager67/Launchcrew/fork) · [Explore the code](https://github.com/voyager67/Launchcrew)
+
+</div>
+
+---
+
+<div align="center">
+
+**LaunchCrew** is an independent open-source project. It is not affiliated with or endorsed by OpenAI or the maintainers of similarly named projects. Product and organization names belong to their respective owners.
 
 Released under the [MIT License](LICENSE).
+
+<sub>Build with intent. Delegate with discipline. Ship with evidence.</sub>
+
+</div>
