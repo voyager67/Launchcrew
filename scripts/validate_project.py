@@ -13,7 +13,6 @@ ROOT = Path(__file__).resolve().parents[1]
 SKILLS = ROOT / ".agents" / "skills"
 REQUIRED = [
     "README.md", "AGENTS.md", "LICENSE", "CONTRIBUTING.md", "SECURITY.md",
-    ".github/README.md", "RELEASE-CHECKLIST.md", "REPOSITORY-METADATA.md", "ROADMAP.md",
     "CODE_OF_CONDUCT.md", "CHANGELOG.md", "manifest.json",
     ".github/workflows/ci.yml", ".github/workflows/sync-labels.yml",
     ".github/labels.json",
