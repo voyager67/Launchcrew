@@ -1,0 +1,52 @@
+[
+  {
+    "name": "bug",
+    "color": "d73a4a",
+    "description": "A reproducible defect in LaunchCrew"
+  },
+  {
+    "name": "enhancement",
+    "color": "a2eeef",
+    "description": "A new feature or workflow improvement"
+  },
+  {
+    "name": "compatibility",
+    "color": "1d76db",
+    "description": "Compatibility behavior across Codex or ChatGPT surfaces"
+  },
+  {
+    "name": "good first issue",
+    "color": "7057ff",
+    "description": "Approachable issue for first-time contributors"
+  },
+  {
+    "name": "help wanted",
+    "color": "008672",
+    "description": "Community contributions are especially welcome"
+  },
+  {
+    "name": "documentation",
+    "color": "0075ca",
+    "description": "Documentation, examples, or onboarding improvements"
+  },
+  {
+    "name": "triage",
+    "color": "fbca04",
+    "description": "Needs maintainer review or classification"
+  },
+  {
+    "name": "needs reproduction",
+    "color": "d4c5f9",
+    "description": "Needs a minimal, reproducible test case"
+  },
+  {
+    "name": "codex",
+    "color": "0052cc",
+    "description": "Affects Codex CLI or Codex-specific configuration"
+  },
+  {
+    "name": "chatgpt",
+    "color": "0e8a16",
+    "description": "Affects ChatGPT Skills or Projects"
+  }
+]

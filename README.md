@@ -219,7 +219,7 @@ Release history is tracked in [`CHANGELOG.md`](CHANGELOG.md). For a copy or fork
 
 ## 🤝 Contributing
 
-Good contributions make workflows clearer, safer, or more verifiable. Open an issue with a concrete use case, or submit a focused pull request with validation output. See [CONTRIBUTING.md](CONTRIBUTING.md) and [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
+LaunchCrew welcomes bug reports, compatibility findings, documentation improvements, and focused pull requests. Start with the [contribution guide](CONTRIBUTING.md), [open an issue](https://github.com/voyager67/Launchcrew/issues/new/choose), or browse [good first issues](https://github.com/voyager67/Launchcrew/labels/good%20first%20issue). Community fixes are welcome; maintainers review contributions before they merge.
 
 If LaunchCrew helps, **star the repository**, try it on a real task, and share a reproducible improvement. Genuine feedback is more useful than inflated claims or mass-promotion.
 

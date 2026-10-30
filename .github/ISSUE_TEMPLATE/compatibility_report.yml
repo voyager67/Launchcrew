@@ -1,0 +1,92 @@
+name: Compatibility report
+description: Report a behavior difference or setup issue in Codex CLI or ChatGPT.
+title: "compat: "
+labels: [compatibility, triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form when LaunchCrew behaves differently across product surfaces or versions.
+        Please confirm the issue is not already reported. Do not include private prompts, secrets, or customer data.
+  - type: dropdown
+    id: product
+    attributes:
+      label: Product surface
+      options:
+        - Codex CLI
+        - ChatGPT Skills
+        - ChatGPT Projects fallback
+        - Codex CLI and ChatGPT
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: launchcrew_version
+    attributes:
+      label: LaunchCrew version or commit
+      placeholder: "0.1.0 or full commit SHA"
+    validations:
+      required: true
+  - type: input
+    id: product_version
+    attributes:
+      label: Product version / build
+      description: Include CLI version, app build, or the date you tested if no version is shown.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, device, shell, workspace type, and other relevant details.
+    validations:
+      required: true
+  - type: dropdown
+    id: install_method
+    attributes:
+      label: Setup or installation method
+      options:
+        - Repository-local Codex skills
+        - Global Codex skills
+        - ChatGPT Skills ZIP upload
+        - ChatGPT Projects fallback
+        - Manual setup
+        - Other / not applicable
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Exact steps to reproduce
+      description: Include commands, selected settings, and the smallest reproducible example.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include the exact error or a description of what did not load / execute.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Sanitized logs or screenshots
+      description: Remove tokens, email addresses, private paths, and proprietary content.
+    validations:
+      required: false
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Confirmation
+      options:
+        - label: I checked existing issues and this appears to be a new report.
+          required: true
+        - label: I removed secrets and private or confidential information.
+          required: true

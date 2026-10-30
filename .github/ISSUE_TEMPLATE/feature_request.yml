@@ -1,20 +1,30 @@
 name: Feature request
-description: Suggest a workflow improvement with a concrete user problem.
+description: Propose a workflow improvement grounded in a real user problem.
 title: "feat: "
 labels: [enhancement, triage]
 body:
+  - type: markdown
+    attributes:
+      value: "Search existing issues first. Do not include confidential prompts, code, or user data."
   - type: textarea
     id: problem
     attributes:
-      label: Problem
-      description: What are you trying to do, and what currently gets in the way?
+      label: Problem and intended user
+      description: What are you trying to accomplish, and who is affected?
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence or example workflow
+      description: Describe when this happens, how often, and what the current workaround costs.
     validations:
       required: true
   - type: textarea
     id: outcome
     attributes:
       label: Desired outcome
-      description: Describe observable success, not just a preferred implementation.
+      description: Describe observable success rather than prescribing only an implementation.
     validations:
       required: true
   - type: textarea
@@ -26,6 +36,7 @@ body:
   - type: textarea
     id: constraints
     attributes:
-      label: Compatibility and safety constraints
+      label: Compatibility, privacy, and safety constraints
+      description: Note any Codex / ChatGPT differences or security implications.
     validations:
       required: false

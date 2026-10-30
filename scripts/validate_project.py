@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate LaunchCrew skills, Codex agents, release docs, and repository metadata."""
+"""Validate LaunchCrew skills, Codex agents, release docs, and community configuration."""
 from __future__ import annotations
 
 from pathlib import Path
@@ -14,7 +14,13 @@ SKILLS = ROOT / ".agents" / "skills"
 REQUIRED = [
     "README.md", "AGENTS.md", "LICENSE", "CONTRIBUTING.md", "SECURITY.md",
     "CODE_OF_CONDUCT.md", "CHANGELOG.md", "manifest.json",
-    ".github/workflows/ci.yml",
+    ".github/workflows/ci.yml", ".github/workflows/sync-labels.yml",
+    ".github/labels.json",
+    ".github/ISSUE_TEMPLATE/bug_report.yml",
+    ".github/ISSUE_TEMPLATE/feature_request.yml",
+    ".github/ISSUE_TEMPLATE/compatibility_report.yml",
+    ".github/ISSUE_TEMPLATE/config.yml",
+    ".github/pull_request_template.md",
     "docs/architecture.md", "docs/codex.md", "docs/chatgpt.md",
     "docs/publishing.md", "docs/skills.md",
     "scripts/install.sh", "scripts/package_chatgpt_skills.py",
@@ -70,14 +76,54 @@ def manifest_errors(skill_names: list[str], agent_names: list[str]) -> list[str]
 
     for field, actual in (("skill_count", len(skill_names)), ("agent_count", len(agent_names))):
         if type(manifest.get(field)) is not int or manifest[field] != actual:
-            errors.append(
-                f"manifest.json: {field!r} must equal the detected count ({actual})"
-            )
+            errors.append(f"manifest.json: {field!r} must equal the detected count ({actual})")
 
     declared_styles = manifest.get("working_styles")
     actual_styles = ["styles/the-craft.md", "styles/the-sprint.md"]
     if not isinstance(declared_styles, list) or sorted(declared_styles) != actual_styles:
         errors.append("manifest.json: 'working_styles' does not match the repository files")
+    return errors
+
+
+def community_config_errors() -> list[str]:
+    """Check contributor labels and ensure CI is configured for pull requests."""
+    labels_path = ROOT / ".github" / "labels.json"
+    errors = []
+    try:
+        labels = json.loads(labels_path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        return [f".github/labels.json: unable to read valid JSON ({exc})"]
+
+    if not isinstance(labels, list):
+        return [".github/labels.json: expected a list of label objects"]
+
+    names = []
+    for item in labels:
+        if not isinstance(item, dict):
+            errors.append(".github/labels.json: each label must be an object")
+            continue
+        name, color, description = item.get("name"), item.get("color"), item.get("description")
+        if not isinstance(name, str) or not name.strip():
+            errors.append(".github/labels.json: label name must be a non-empty string")
+            continue
+        names.append(name)
+        if not isinstance(color, str) or not re.fullmatch(r"[0-9a-fA-F]{6}", color):
+            errors.append(f".github/labels.json: invalid hex color for {name!r}")
+        if not isinstance(description, str) or not description.strip():
+            errors.append(f".github/labels.json: missing description for {name!r}")
+
+    if len(names) != len(set(names)):
+        errors.append(".github/labels.json: label names must be unique")
+    required_labels = {"bug", "enhancement", "compatibility", "good first issue", "help wanted"}
+    missing = sorted(required_labels - set(names))
+    if missing:
+        errors.append(f".github/labels.json: missing community labels: {', '.join(missing)}")
+
+    ci_path = ROOT / ".github" / "workflows" / "ci.yml"
+    if ci_path.is_file():
+        ci_text = ci_path.read_text(encoding="utf-8")
+        if not re.search(r"(?m)^  pull_request:\s*(?:#.*)?$", ci_text):
+            errors.append(".github/workflows/ci.yml: CI must run on pull_request events")
     return errors
 
 
@@ -98,14 +144,10 @@ def broken_local_markdown_links(markdown_paths: list[Path]) -> list[str]:
             try:
                 destination.relative_to(root)
             except ValueError:
-                errors.append(
-                    f"{source.relative_to(ROOT)}: local link escapes repository: {target}"
-                )
+                errors.append(f"{source.relative_to(ROOT)}: local link escapes repository: {target}")
                 continue
             if not destination.exists():
-                errors.append(
-                    f"{source.relative_to(ROOT)}: broken local link: {target}"
-                )
+                errors.append(f"{source.relative_to(ROOT)}: broken local link: {target}")
     return errors
 
 
@@ -138,17 +180,11 @@ def main() -> int:
         if not NAME_RE.fullmatch(name):
             errors.append(f"{manifest.relative_to(ROOT)}: invalid skill name {name!r}")
         if name != folder.name:
-            errors.append(
-                f"{manifest.relative_to(ROOT)}: name {name!r} does not match folder {folder.name!r}"
-            )
+            errors.append(f"{manifest.relative_to(ROOT)}: name {name!r} does not match folder {folder.name!r}")
         if not desc or len(desc) > 1024:
-            errors.append(
-                f"{manifest.relative_to(ROOT)}: description must be 1-1024 characters"
-            )
+            errors.append(f"{manifest.relative_to(ROOT)}: description must be 1-1024 characters")
         if len(manifest.read_text(encoding="utf-8").splitlines()) > 500:
-            errors.append(
-                f"{manifest.relative_to(ROOT)}: SKILL.md exceeds recommended 500-line limit"
-            )
+            errors.append(f"{manifest.relative_to(ROOT)}: SKILL.md exceeds recommended 500-line limit")
 
     agents_dir = ROOT / ".codex" / "agents"
     agent_files = sorted(agents_dir.glob("*.toml")) if agents_dir.is_dir() else []
@@ -170,7 +206,11 @@ def main() -> int:
         errors.append(f"expected at least 5 specialist agents; found {len(agent_files)}")
 
     errors.extend(manifest_errors(skill_names, agent_names))
-    markdown_to_check = [ROOT / "README.md", *sorted((ROOT / "docs").glob("*.md"))]
+    errors.extend(community_config_errors())
+    markdown_to_check = [
+        ROOT / "README.md", ROOT / "CONTRIBUTING.md",
+        *sorted((ROOT / "docs").glob("*.md"))
+    ]
     errors.extend(broken_local_markdown_links(markdown_to_check))
 
     if errors:
@@ -181,7 +221,7 @@ def main() -> int:
 
     print(
         f"LaunchCrew validation passed: {len(skill_names)} skills, "
-        f"{len(agent_files)} Codex agents, manifest and local documentation links are consistent."
+        f"{len(agent_files)} Codex agents, manifest, community configuration, and local links are consistent."
     )
     return 0
 

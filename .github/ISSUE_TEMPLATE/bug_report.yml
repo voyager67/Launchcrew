@@ -1,36 +1,52 @@
 name: Bug report
-description: Report a reproducible problem in a skill, installer, validator, or bundle.
+description: Report a reproducible problem in LaunchCrew.
 title: "bug: "
 labels: [bug, triage]
 body:
   - type: markdown
     attributes:
-      value: "Please do not include secrets, private code, or confidential user data."
+      value: |
+        Thanks for helping improve LaunchCrew. Search existing issues first.
+        Never include passwords, API keys, private repository content, or personal data.
   - type: input
     id: version
     attributes:
-      label: LaunchCrew version or commit
-      placeholder: "0.1.0 or commit SHA"
+      label: LaunchCrew version, commit, or release
+      description: Use a release tag or the full commit SHA where possible.
+      placeholder: "0.1.0 or full commit SHA"
     validations:
       required: true
   - type: dropdown
     id: surface
     attributes:
-      label: Surface
+      label: Affected surface
       options:
         - Codex CLI
         - ChatGPT Skills
         - ChatGPT Projects fallback
-        - Install script
+        - Installer
         - Packaging / validation
         - Documentation
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, shell, Python version (if relevant), and tool version.
+      placeholder: "Ubuntu 24.04, bash 5.x, Python 3.11"
     validations:
       required: true
   - type: textarea
     id: reproduce
     attributes:
       label: Steps to reproduce
-      description: Include exact commands and sanitized input where possible.
+      description: Include exact commands, sanitized input, and the smallest reliable reproduction.
+      placeholder: |
+        1. Clone ...
+        2. Run ...
+        3. Observe ...
     validations:
       required: true
   - type: textarea
@@ -43,5 +59,12 @@ body:
     id: actual
     attributes:
       label: Actual behavior and error output
+      description: Paste relevant logs in a fenced code block. Redact secrets and private paths.
     validations:
       required: true
+  - type: textarea
+    id: workaround
+    attributes:
+      label: Workaround or additional context
+    validations:
+      required: false

@@ -2,6 +2,18 @@
 
 All notable changes are documented here. This project follows a lightweight Keep a Changelog format and uses semantic versioning where releases are tagged.
 
+## [Unreleased]
+
+### Added
+- Dedicated Codex / ChatGPT compatibility issue form and issue chooser.
+- Community label catalog and automated GitHub label synchronization, including good first issue and help wanted.
+- Contributor guidance for reproduction, local validation, and evidence-backed pull requests.
+
+### Changed
+- Expanded bug and feature report forms to collect reproducible evidence.
+- Pull request template now requests exact test output and product-environment details.
+- CI runs on pull requests with repository validation, unit tests, installer smoke tests, and bundle verification.
+
 ## [0.1.0] - 2026-10-29
 
 ### Added

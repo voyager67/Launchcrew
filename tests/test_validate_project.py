@@ -1,5 +1,6 @@
 from pathlib import Path
 import importlib.util
+import json
 import tempfile
 import unittest
 import zipfile
@@ -57,8 +58,26 @@ class RepositoryAssetTests(unittest.TestCase):
         agent_names = sorted(path.stem for path in (ROOT / ".codex" / "agents").glob("*.toml"))
         self.assertEqual(validator.manifest_errors(skill_names, agent_names), [])
 
+    def test_community_labels_and_pr_ci_are_configured(self):
+        self.assertEqual(validator.community_config_errors(), [])
+        labels = json.loads((ROOT / ".github" / "labels.json").read_text(encoding="utf-8"))
+        names = {label["name"] for label in labels}
+        self.assertIn("good first issue", names)
+        self.assertIn("help wanted", names)
+        self.assertIn("compatibility", names)
+
+    def test_compatibility_issue_form_covers_both_product_surfaces(self):
+        form = (ROOT / ".github" / "ISSUE_TEMPLATE" / "compatibility_report.yml").read_text(encoding="utf-8")
+        self.assertIn("Codex CLI", form)
+        self.assertIn("ChatGPT Skills", form)
+        self.assertIn("product_version", form)
+        self.assertIn("Exact steps to reproduce", form)
+
     def test_user_facing_markdown_has_no_broken_local_links(self):
-        markdown_files = [ROOT / "README.md", *sorted((ROOT / "docs").glob("*.md"))]
+        markdown_files = [
+            ROOT / "README.md", ROOT / "CONTRIBUTING.md",
+            *sorted((ROOT / "docs").glob("*.md"))
+        ]
         self.assertEqual(validator.broken_local_markdown_links(markdown_files), [])
 
     def test_working_style_profiles_exist_and_keep_quality_guardrails(self):
